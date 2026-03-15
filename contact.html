@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loving Homes | تواصل معنا</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="brand-name">
+            <img src="images/Loving_Homes_logo5.png" alt="Loving Homes Logo">
+            <span>Loving Homes</span>
+        </a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+        <nav>
+            <a href="index.html" data-en="Home">الرئيسية</a>
+            <a href="facilities.html" data-en="Facilities">المرافق</a>
+            <a href="packages.html" data-en="Packages">الحزم</a>
+            <a href="about.html" data-en="About Us">عن الفندق</a>
+            <a href="contact.html" data-en="Contact Us">تواصل معنا</a>
+            <a href="instructions.html">تعليمات الاستخدام</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title" data-en="Contact Us">تواصل معنا</h1>
+        <p class="section-subtitle" data-en="We are here to answer all your questions and provide the best care for your pet">نحن هنا للرد على جميع أسئلتك وتقديم أفضل رعاية لحيوانك الأليف</p>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <div class="card" style="text-align: center; padding: 40px 20px;">
+                <h3 style="font-size: 3rem;">📞</h3>
+                <h3 data-en="Phone">الهاتف</h3>
+                <p>+852 1234 5678</p>
+                <p data-en="Available 24/7">متاح على مدار الساعة</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 40px 20px;">
+                <h3 style="font-size: 3rem;">✉️</h3>
+                <h3 data-en="Email">البريد الإلكتروني</h3>
+                <p>info@lovinghomes.hk</p>
+                <p data-en="We reply within 24 hours">نرد خلال 24 ساعة</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 40px 20px;">
+                <h3 style="font-size: 3rem;">📍</h3>
+                <h3 data-en="Location">الموقع</h3>
+                <p data-en="Hong Kong, Kowloon District">هونج كونج، منطقة كولون</p>
+                <p data-en="Near MTR Station">قرب محطة المترو</p>
+            </div>
+        </div>
+
+        <div class="form-box" style="margin-top: 50px;">
+            <h2 class="section-title" style="font-size: 2rem;" data-en="Send us a Message">أرسل لنا رسالة</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label data-en="Your Name">اسمك</label>
+                    <input type="text" required placeholder="أدخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label data-en="Email">البريد الإلكتروني</label>
+                    <input type="email" required placeholder="أدخل بريدك الإلكتروني">
+                </div>
+                <div class="form-group">
+                    <label data-en="Message">الرسالة</label>
+                    <textarea rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; font-size: 1.2rem;" data-en="Send Message">إرسال الرسالة</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- الزر العائم -->
+    <div class="fab-container">
+        <button class="fab-btn" id="fab-btn">⚙️</button>
+        <div class="fab-menu" id="fab-menu">
+            <button id="lang-toggle" title="تغيير اللغة">🇺🇸</button>
+            <button id="dark-mode" title="الوضع الليلي">🌙</button>
+            <button id="font-up" title="تكبير الخط">A+</button>
+            <button id="font-down" title="تصغير الخط">A-</button>
+        </div>
+    </div>
+
+    <!-- Footer الذيل المرتب -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="facilities.html">المرافق</a></li>
+                    <li><a href="packages.html">الحزم</a></li>
+                    <li><a href="about.html">عن الفندق</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <p>+852 1234 5678</p>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <p>info@lovinghomes.hk</p>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <p>هونج كونج، منطقة كولون</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <p>ابق على اطلاع بآخر أخبار وعروض فندق لوفينغ هومز</p>
+                <div class="social-links">
+                    <a href="#" aria-label="فيسبوك">📘</a>
+                    <a href="#" aria-label="إنستغرام">📷</a>
+                    <a href="#" aria-label="تويتر">🐦</a>
+                    <a href="#" aria-label="يوتيوب">📹</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 <span>Loving Homes</span> - جميع الحقوق محفوظة | <a href="#">سياسة الخصوصية</a></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

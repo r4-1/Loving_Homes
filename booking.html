@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loving Homes | الحجز والتواصل</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="brand-name">
+            <img src="images/Loving_Homes_logo5.png" alt="Loving Homes Logo">
+            <span>Loving Homes</span>
+        </a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="facilities.html">المرافق</a>
+            <a href="packages.html">الحزم</a>
+            <a href="about.html">عن الفندق</a>
+            <a href="booking.html">الحجز</a>
+            <a href="instructions.html">تعليمات الاستخدام</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title">نموذج الحجز الإلكتروني</h1>
+        <p class="section-subtitle">يرجى تعبئة بياناتك بدقة وسيقوم فريقنا بالتواصل معك لتأكيد الحجز وترتيب أي طلبات خاصة لكلبك</p>
+
+        <div class="form-box">
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>الاسم الكامل لمالك الكلب:</label>
+                    <input type="text" required placeholder="أدخل اسمك الثلاثي">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف للتواصل:</label>
+                    <input type="tel" required placeholder="مثال: 971501234567+">
+                </div>
+                <div class="form-group">
+                    <label>اسم الكلب وسلالته:</label>
+                    <input type="text" required placeholder="مثال: ماكس - جولدن ريتريفر">
+                </div>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1; min-width: 200px;">
+                        <label>تاريخ الوصول:</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group" style="flex: 1; min-width: 200px;">
+                        <label>عدد أيام الإقامة:</label>
+                        <input type="number" id="days" required min="1" value="1" placeholder="عدد الأيام">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>اختر نوع الحزمة المطلوبة:</label>
+                    <select id="package" required>
+                        <option value="0">-- الرجاء اختيار حزمة --</option>
+                        <option value="200">حزمة اليوم الواحد ($200 في اليوم)</option>
+                        <option value="500">الحزمة الكلاسيكية ($500 في اليوم)</option>
+                        <option value="700">الحزمة المميزة VIP ($700 في اليوم)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات إضافية (اختياري):</label>
+                    <textarea rows="4" placeholder="اذكر هنا أي تعليمات طبية أو غذائية خاصة بكلبك"></textarea>
+                </div>
+
+                <!-- الحاسبة التفاعلية المبتكرة -->
+                <div class="price-calc">
+                    التكلفة التقديرية للإقامة
+                    <span id="total-price">$0</span>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 30px; font-size: 1.3rem;">تأكيد وإرسال طلب الحجز</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- الزر العائم -->
+    <div class="fab-container">
+        <button class="fab-btn" id="fab-btn">⚙️</button>
+        <div class="fab-menu" id="fab-menu">
+            <button id="lang-toggle" title="تغيير اللغة">🇺🇸</button>
+            <button id="dark-mode" title="الوضع الليلي">🌙</button>
+            <button id="font-up" title="تكبير الخط">A+</button>
+            <button id="font-down" title="تصغير الخط">A-</button>
+        </div>
+    </div>
+
+    <!-- Footer الذيل المرتب -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="facilities.html">المرافق</a></li>
+                    <li><a href="packages.html">الحزم</a></li>
+                    <li><a href="about.html">عن الفندق</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <p>+852 1234 5678</p>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <p>info@lovinghomes.hk</p>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <p>هونج كونج، منطقة كولون</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <p>ابق على اطلاع بآخر أخبار وعروض فندق لوفينغ هومز</p>
+                <div class="social-links">
+                    <a href="#" aria-label="فيسبوك">📘</a>
+                    <a href="#" aria-label="إنستغرام">📷</a>
+                    <a href="#" aria-label="تويتر">🐦</a>
+                    <a href="#" aria-label="يوتيوب">📹</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 <span>Loving Homes</span> - جميع الحقوق محفوظة | <a href="#">سياسة الخصوصية</a></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

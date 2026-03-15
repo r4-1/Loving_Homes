@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loving Homes | الحزم</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="brand-name">
+            <img src="images/Loving_Homes_logo5.png" alt="Loving Homes Logo">
+            <span>Loving Homes</span>
+        </a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="facilities.html">المرافق</a>
+            <a href="packages.html">الحزم</a>
+            <a href="about.html">عن الفندق</a>
+            <a href="contact.html">تواصل معنا</a>
+            <a href="instructions.html">تعليمات الاستخدام</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="section-title">حزم الإقامة المتنوعة</h1>
+        <p class="section-subtitle">لقد صممنا حزما مرنة تناسب ميزانيتك وتلبي احتياجات كلبك سواء كنت تبحث عن رعاية نهارية قصيرة أو إقامة فندقية فاخرة وطويلة</p>
+
+        <div class="grid">
+            <div class="card" style="text-align: center; padding: 40px 20px;">
+                <h3>حزمة اليوم الواحد</h3>
+                <h2 style="color: var(--accent); font-size: 3rem; margin: 20px 0;">$200 <span style="font-size: 1rem; color: var(--text);">/ يوم</span></h2>
+                <p style="margin-bottom: 30px;">مثالية للأشخاص المشغولين طوال اليوم وتتضمن:</p>
+                <ul style="list-style: none; text-align: right; padding: 0 20px; margin-bottom: 30px; line-height: 2.5;">
+                    <li>✔️ مشي مرتين يوميا مع المدربين</li>
+                    <li>✔️ الدخول لمنطقة اللعب الخارجية</li>
+                    <li>✔️ تجربة مسار الرشاقة وحفر الرمل</li>
+                    <li>✔️ وجبة غداء خفيفة صحية</li>
+                </ul>
+                <a href="booking.html" class="btn">اختر هذه الحزمة</a>
+            </div>
+
+            <div class="card" style="text-align: center; padding: 50px 20px; transform: scale(1.05); border: 2px solid var(--accent); background: linear-gradient(135deg, var(--card-bg), var(--light));">
+                <div style="background: var(--accent); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 15px;">الأكثر طلبا</div>
+                <h3>الحزمة الكلاسيكية</h3>
+                <h2 style="color: var(--accent); font-size: 3rem; margin: 20px 0;">$500 <span style="font-size: 1rem; color: var(--text);">/ يوم</span></h2>
+                <p style="margin-bottom: 30px;">الخيار المتوازن للإقامات المريحة وتتضمن:</p>
+                <ul style="list-style: none; text-align: right; padding: 0 20px; margin-bottom: 30px; line-height: 2.5;">
+                    <li>✔️ مشي 3 مرات يوميا</li>
+                    <li>✔️ حظيرة لعب داخلية وغرفة مكيفة</li>
+                    <li>✔️ جلسة استرخاء مع موسيقى مهدئة</li>
+                    <li>✔️ جلسة تنظيف وتمشيط أسبوعية</li>
+                </ul>
+                <a href="booking.html" class="btn">اختر هذه الحزمة</a>
+            </div>
+
+            <div class="card" style="text-align: center; padding: 40px 20px;">
+                <h3>الحزمة المميزة VIP</h3>
+                <h2 style="color: var(--accent); font-size: 3rem; margin: 20px 0;">$700 <span style="font-size: 1rem; color: var(--text);">/ يوم</span></h2>
+                <p style="margin-bottom: 30px;">أقصى درجات الرفاهية والاهتمام وتتضمن:</p>
+                <ul style="list-style: none; text-align: right; padding: 0 20px; margin-bottom: 30px; line-height: 2.5;">
+                    <li>✔️ مشي 4 مرات وجلسات لعب فردية</li>
+                    <li>✔️ مساحة عشبية خاصة لكلبك فقط</li>
+                    <li>✔️ جلسة سبا متكاملة وحلاقة فاخرة</li>
+                    <li>✔️ إرسال تقرير مصور يوميا للمالك</li>
+                </ul>
+                <a href="booking.html" class="btn">اختر هذه الحزمة</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- الزر العائم -->
+    <div class="fab-container">
+        <button class="fab-btn" id="fab-btn">⚙️</button>
+        <div class="fab-menu" id="fab-menu">
+            <button id="lang-toggle" title="تغيير اللغة">🇺🇸</button>
+            <button id="dark-mode" title="الوضع الليلي">🌙</button>
+            <button id="font-up" title="تكبير الخط">A+</button>
+            <button id="font-down" title="تصغير الخط">A-</button>
+        </div>
+    </div>
+
+    <!-- Footer الذيل المرتب -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="facilities.html">المرافق</a></li>
+                    <li><a href="packages.html">الحزم</a></li>
+                    <li><a href="about.html">عن الفندق</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <p>+852 1234 5678</p>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <p>info@lovinghomes.hk</p>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <p>هونج كونج، منطقة كولون</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <p>ابق على اطلاع بآخر أخبار وعروض فندق لوفينغ هومز</p>
+                <div class="social-links">
+                    <a href="#" aria-label="فيسبوك">📘</a>
+                    <a href="#" aria-label="إنستغرام">📷</a>
+                    <a href="#" aria-label="تويتر">🐦</a>
+                    <a href="#" aria-label="يوتيوب">📹</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 <span>Loving Homes</span> - جميع الحقوق محفوظة | <a href="#">سياسة الخصوصية</a></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
