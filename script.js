@@ -1,4 +1,23 @@
-// الترجمة العربية والإنجليزية
+/**
+ * فندق لوفينغ هومز - الملف الرئيسي لجافاسكريبت
+ * 
+ * الميزات:
+ * - دعم ثنائي اللغة (عربي/إنجليزي) مع تبديل RTL/LTR
+ * - ترجمة محتوى الصفحات ديناميكياً بناءً على كشف DOM
+ * - زر الإجراء العائم (FAB) للتحكم باللغة والثيم وحجم الخط
+ * - قائمة همبرغر للهواتف المحمولة
+ * - حاسبة تكلفة الحجز
+ * - معالجة النماذج مع تنبيهات النجاح
+ * - حفظ الإعدادات عبر LocalStorage
+ * 
+ * الاستخدام: يتم تحميله في جميع الصفحات عبر `<script src=\"script.js\"></script>`
+ * 
+ */
+/* 
+ * كائن الترجمات الثنائية اللغة - العربية (ar) والإنجليزية (en)
+ * المفاتيح تطابق سمات data-translate ومحددات DOM الديناميكية
+ * يغطي جميع الصفحات: الرئيسية، المرافق، الحزم، من نحن، التواصل، الحجز، التعليمات
+ */
 const translations = {
     ar: {
         home: "الرئيسية",
@@ -22,7 +41,7 @@ const translations = {
         grooming: "صالة الحلاقة والسبا",
         groomingDesc: "صالة مجهزة بأحدث أدوات العناية لتوفير جلسات استحمام دافئة وقص شعر احترافي وتقليم الأظافر ليخرج كلبك بأبهى حلة وأفضل نظافة.",
         suites: "أجنحة فندقية مكيفة",
-        suitesDesc: "أجنحة خاصة واسعة مزودة بنظام تدفئة وتبريد تحت الأرضية لضمان درجة حرارة مثالية بالإضافة إلى شاشات تعرض برامج مهدئة للكلاب قبل النوم.",
+        suitesDesc: "أجنحة خاصة واسعة مزودة بنظام تبريد وتدفئة تحت الأرضية لضمان درجة حرارة مثالية بالإضافة إلى شاشات تعرض برامج مهدئة للكلاب قبل النوم.",
         outdoor: "مراعي خارجية آمنة",
         outdoorDesc: "مساحات عشبية واسعة ومحاطة بأسوار عالية تتيح لكلبك الركض واللعب بحرية تامة في الهواء الطلق تحت إشراف طاقم التدريب المتخصص.",
         transport: "خدمة النقل الفاخرة",
@@ -39,13 +58,13 @@ const translations = {
         classicPackage: "الحزمة الكلاسيكية",
         mostPopular: "الأكثر طلباً",
         classicFeatures: "الخيار المتوازن للإقامات المريحة وتتضمن:",
-        walk3: "مشٍي 3 مرات يومياً",
+        walk3: "مشي 3 مرات يومياً",
         indoorPlay: "حظيرة لعب داخلية وغرفة مكيفة",
         relaxation: "جلسة استرخاء مع موسيقى مهدئة",
         groomingWeekly: "جلسة تنظيف وتمشيط أسبوعية",
         vipPackage: "الحزمة المميزة VIP",
         vipFeatures: "أقصى درجات الرفاهية والاهتمام وتتضمن:",
-        walk4: "مشٍي 4 مرات وجلسات لعب فردية",
+        walk4: "مشي 4 مرات وجلسات لعب فردية",
         privateGrass: "مساحة عشبية خاصة لكلبك فقط",
         spa: "جلسة سبا متكاملة وحلاقة فاخرة",
         dailyReport: "إرسال تقرير مصور يومياً للمالك",
@@ -53,7 +72,7 @@ const translations = {
         aboutTitle: "من نحن",
         ourStory: "قصتنا ورؤيتنا",
         aboutDesc1: "تأسس فندق لوفينغ هومز في قلب هونج كونج انطلاقاً من شغفنا العميق وحبنا اللامحدود للحيوانات الأليفة. لقد لاحظنا افتقار السوق لمكان يجمع بين الرعاية الطبية والرفاهية الفندقية الفاخرة فقررنا بناء هذا الصرح ليكون المنزل الثاني لكلبك.",
-        aboutDesc2: "يضم فريقنا نخبة من الأطباء البيطريين ومدربي السلوك المحترفين الذين يكرسون وقتهم لضمان راحة وسعادة نزلاء الفhotel. نحن نلتزم بتقديم أعلى معايير الجودة والنظافة العالمية.",
+        aboutDesc2: "يضم فريقنا نخبة من الأطباء البيطريين ومدربي السلوك المحترفين الذين يكرسون وقتهم لضمان راحة وسعادة نزلاء الفندق. نحن نلتزم بتقديم أعلى معايير الجودة والنظافة العالمية.",
         bookingTitle: "نموذج الحجز الإلكتروني",
         bookingDesc: "يرجى تعبئة بياناتك بدقة وسيقوم فريقنا بالتواصل معك لتأكيد الحجز وترتيب أي طلبات خاصة لكلبك",
         ownerName: "الاسم الكامل لمالك الكلب:",
@@ -220,13 +239,19 @@ const translations = {
     }
 };
 
-
+/**
+ * تعيين اللغة للتطبيق، حفظ في localStorage، تطبيق اتجاه RTL/LTR
+ * تحديث جميع العناصر بـ data-translate و data-translate-placeholder
+ * 
+ * @param {string} lang - كود اللغة ('ar' أو 'en')
+ * @returns {void}
+ */
 function setLanguage(lang) {
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
-
+    // تحديث العناصر بسمة data-translate
     document.querySelectorAll('[data-translate]').forEach(el => {
         const key = el.getAttribute('data-translate');
         if (translations[lang][key]) {
@@ -234,7 +259,7 @@ function setLanguage(lang) {
         }
     });
 
-
+    // تحديث placeholders بسمة data-translate-placeholder
     document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
         const key = el.getAttribute('data-translate-placeholder');
         if (translations[lang][key]) {
@@ -242,10 +267,17 @@ function setLanguage(lang) {
         }
     });
 
-    // تحديث النصوص في العناصر المحددة
+    // تحديث نصوص الصفحة
     updatePageText(lang);
 }
 
+/**
+ * تحديث نصوص الصفحة المحددة بناءً على نوع الصفحة المكتشف (الرئيسية، المرافق، الحزم...)
+ * معالجة روابط التنقل، أقسام الهيرو، البطاقات، النماذج ديناميكياً عبر كشف DOM المعقد
+ * 
+ * @param {string} lang - اللغة الحالية
+ * @returns {void}
+ */
 function updatePageText(lang) {
     const t = translations[lang];
 
@@ -258,22 +290,22 @@ function updatePageText(lang) {
     if (navLinks[4]) navLinks[4].textContent = t.contact;
     if (navLinks[5]) navLinks[5].textContent = t.instructions;
 
-    // الصفحة الرئيسية - الصفحة الأولى
-    const heroTitle = document.querySelector('div[style*="padding: 150px"] h1');
+    // الصفحة الرئيسية - قسم الهيرو
+    const heroTitle = document.querySelector('div[style*=\"padding: 150px\"] h1');
     if (heroTitle) heroTitle.textContent = t.heroTitle;
 
-    const heroDesc = document.querySelector('div[style*="padding: 150px"] p');
+    const heroDesc = document.querySelector('div[style*=\"padding: 150px\"] p');
     if (heroDesc) heroDesc.textContent = t.heroDesc;
 
-    const bookBtn = document.querySelector('div[style*="padding: 150px"] .btn');
+    const bookBtn = document.querySelector('div[style*=\"padding: 150px\"] .btn');
     if (bookBtn) bookBtn.textContent = t.bookNow;
 
-    // تحديث عناوين الأقسام - تحديد الصفحة من خلال فحص المحتوى
+    // تحديث عناوين الأقسام - كشف نوع الصفحة من خلال فحص المحتوى
     const sectionTitles = document.querySelectorAll('.section-title');
     const sectionSubtitles = document.querySelectorAll('.section-subtitle');
 
-    // التحقق من الصفحة الحالية من خلال فحص elements محددة
-    const hasHeroSection = !!document.querySelector('div[style*="padding: 150px"]');
+    // كشف الصفحة الحالية من خلال فحص العناصر المحددة
+    const hasHeroSection = !!document.querySelector('div[style*=\"padding: 150px\"]');
     const hasPackageSelect = !!document.querySelector('#package');
     const hasContactForm = !!document.querySelector('#contactForm');
     const hasBookingForm = !!document.querySelector('#bookingForm');
@@ -313,12 +345,12 @@ function updatePageText(lang) {
         }
 
         // قسم النصائح
-        const tipsSection = document.querySelector('[style*="linear-gradient"] h2');
+        const tipsSection = document.querySelector('[style*=\"linear-gradient\"] h2');
         if (tipsSection && t.tipsTitle) {
             tipsSection.textContent = t.tipsTitle;
         }
         // ترجمة قائمة النصائح
-        const tipsList = document.querySelector('[data-translate="tipsList"]');
+        const tipsList = document.querySelector('[data-translate=\"tipsList\"]');
         if (tipsList) {
             const tipItems = tipsList.querySelectorAll('li');
             if (tipItems[0] && t.tip1) tipItems[0].textContent = t.tip1;
@@ -329,11 +361,11 @@ function updatePageText(lang) {
     }
 
     // صفحة المرافق - فحص الصور
-    const hasGroomingImg = !!document.querySelector('img[alt="صالة الحلاقة"]');
-    const hasSuitesImg = !!document.querySelector('img[alt="الغرف الفندقية"]');
+    const hasGroomingImg = !!document.querySelector('img[alt=\"صالة الحلاقة\"]');
+    const hasSuitesImg = !!document.querySelector('img[alt=\"الغرف الفندقية\"]');
 
     // صفحة من نحن
-    const hasAboutImg = !!document.querySelector('img[alt="فريق الفندق"]') || document.querySelector('img[src*="1544568100"]');
+    const hasAboutImg = !!document.querySelector('img[alt=\"فريق الفندق\"]') || document.querySelector('img[src*=\"1544568100\"]');
 
     // تحديث الصفحة الرئيسية
     if (hasHeroSection && sectionTitles[0]) {
@@ -404,7 +436,7 @@ function updatePageText(lang) {
         }
     }
 
-    // صفحة الحزم - تحديد الصفحة من خلال فحص العناوين أو المحتوى
+    // صفحة الحزم - كشف الصفحة من خلال فحص العناوين أو المحتوى
     const packagesTitle = document.querySelector('.section-title');
     const isPackagesPage = packagesTitle && (
         packagesTitle.textContent.includes('حزم') ||
@@ -428,7 +460,7 @@ function updatePageText(lang) {
             const btn_1 = card1.querySelector('.btn');
 
             if (h3_1) h3_1.textContent = t.dayPackage;
-            if (h2_1) h2_1.innerHTML = '$200 <span style="font-size: 1rem; color: var(--text);">' + t.perDay + '</span>';
+            if (h2_1) h2_1.innerHTML = '$200 <span style=\"font-size: 1rem; color: var(--text);\">' + t.perDay + '</span>';
             if (p_1) p_1.textContent = t.dayPackageFeatures;
             if (lis_1[0]) lis_1[0].textContent = '✔️ ' + t.walk2;
             if (lis_1[1]) lis_1[1].textContent = '✔️ ' + t.playArea;
@@ -446,7 +478,7 @@ function updatePageText(lang) {
             const div_2 = card2.querySelector('div');
 
             if (h3_2) h3_2.textContent = t.classicPackage;
-            if (h2_2) h2_2.innerHTML = '$500 <span style="font-size: 1rem; color: var(--text);">' + t.perDay + '</span>';
+            if (h2_2) h2_2.innerHTML = '$500 <span style=\"font-size: 1rem; color: var(--text);\">' + t.perDay + '</span>';
             if (p_2[1]) p_2[1].textContent = t.classicFeatures;
             if (div_2) div_2.textContent = t.mostPopular;
             if (lis_2[0]) lis_2[0].textContent = '✔️ ' + t.walk3;
@@ -464,17 +496,36 @@ function updatePageText(lang) {
             const btn_3 = card3.querySelector('.btn');
 
             if (h3_3) h3_3.textContent = t.vipPackage;
-            if (h2_3) h2_3.innerHTML = '$700 <span style="font-size: 1rem; color: var(--text);">' + t.perDay + '</span>';
+            if (h2_3) h2_3.innerHTML = '$700 <span style=\"font-size: 1rem; color: var(--text);\">' + t.perDay + '</span>';
             if (p_3) p_3.textContent = t.vipFeatures;
             if (lis_3[0]) lis_3[0].textContent = '✔️ ' + t.walk4;
             if (lis_3[1]) lis_3[1].textContent = '✔️ ' + t.privateGrass;
             if (lis_3[2]) lis_3[2].textContent = '✔️ ' + t.spa;
             if (lis_3[3]) lis_3[3].textContent = '✔️ ' + t.dailyReport;
             if (btn_3) btn_3.textContent = t.choosePackage;
+
+            // الحزمة الرابعة (إذا وجدت)
+            if (cards.length >= 4) {
+                const card4 = cards[3];
+                const h3_4 = card4.querySelector('h3');
+                const h2_4 = card4.querySelector('h2');
+                const p_4 = card4.querySelector('p');
+                const lis_4 = card4.querySelectorAll('li');
+                const btn_4 = card4.querySelector('.btn');
+
+                if (h3_4) h3_4.textContent = lang === 'ar' ? 'الحزمة المخصصة' : 'Custom Package';
+                if (h2_4) h2_4.innerHTML = lang === 'ar' ? 'حسب الطلب' : 'Upon Request';
+                if (p_4) p_4.textContent = lang === 'ar' ? 'للإقامات الطويلة أو الكلاب ذات المتطلبات الخاصة وتتضمن:' : 'For long stays or dogs with special requirements, including:';
+                if (lis_4[0]) lis_4[0].textContent = lang === 'ar' ? '✔️ مرونة تامة في مدة الإقامة' : '✔️ Total flexibility in stay duration';
+                if (lis_4[1]) lis_4[1].textContent = lang === 'ar' ? '✔️ رعاية طبية أو غذائية مخصصة' : '✔️ Customized medical or dietary care';
+                if (lis_4[2]) lis_4[2].textContent = lang === 'ar' ? '✔️ ترتيبات خاصة حسب احتياج كلبك' : '✔️ Special arrangements as per needs';
+                if (lis_4[3]) lis_4[3].textContent = lang === 'ar' ? '✔️ تسعير مرن بناء على الخدمات' : '✔️ Flexible pricing based on services';
+                if (btn_4) btn_4.textContent = lang === 'ar' ? 'تواصل معنا للترتيب' : 'Contact Us to Arrange';
+            }
         }
     }
 
-    // صفحة من نحن - تحديد الصفحة من خلال فحص العناوين
+    // صفحة من نحن - كشف الصفحة من خلال فحص العناوين
     const aboutTitle = document.querySelector('.section-title');
     const isAboutPage = aboutTitle && (
         aboutTitle.textContent.includes('من نحن') ||
@@ -494,7 +545,7 @@ function updatePageText(lang) {
         }
     }
 
-    // صفحة تواصل معنا - تحديد الصفحة من خلال فحص العناوين
+    // صفحة تواصل معنا - كشف الصفحة من خلال فحص العناوين
     const contactTitle = document.querySelector('.section-title');
     const isContactPage = contactTitle && (
         contactTitle.textContent.includes('تواصل') ||
@@ -560,7 +611,7 @@ function updatePageText(lang) {
             const inputs = form.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
             const options = form.querySelectorAll('#package option');
             const priceCalc = form.querySelector('.price-calc');
-            const submitBtn = form.querySelector('button[type="submit"]');
+            const submitBtn = form.querySelector('button[type=\"submit\"]');
 
             if (labels[0]) labels[0].textContent = t.ownerName;
             if (inputs[0]) inputs[0].placeholder = t.ownerNamePlaceholder;
@@ -586,7 +637,12 @@ function updatePageText(lang) {
     }
 }
 
-// دالة لتحديث حدث الزر العائم
+/**
+ * تهيئة زر الإجراء العائم (FAB) لتبديل القائمة
+ * ربط معالجات onclick لإظهار/إخفاء خيارات FAB (اللغة، الوضع الليلي، الخط)
+ * 
+ * @returns {void}
+ */
 function initFabButton() {
     const fabBtn = document.getElementById('fab-btn');
     const fabMenu = document.getElementById('fab-menu');
@@ -601,7 +657,25 @@ function initFabButton() {
     }
 }
 
+/**
+ * معالج DOMContentLoaded الرئيسي - يهيئ واجهة المستخدم كاملة:
+ * 1. استعادة اللغة وتطبيقها
+ * 2. إعداد زر FAB
+ * 3. قائمة همبرغر للهاتف
+ * 4. معالج تبديل اللغة
+ * 5. تبديل الوضع الليلي مع الحفظ
+ * 6. تحكم حجم الخط (80-130%)
+ * 7. تحديثات حاسبة الحجز في الوقت الفعلي
+ * 8. معالجات إرسال النماذج مع التنبيهات
+ */
 document.addEventListener('DOMContentLoaded', function() {
+    /* ===== قسم التهيئة الرئيسي ===== 
+       يعالج إعداد واجهة المستخدم كاملة، مستمعات الأحداث، استعادة localStorage
+    */
+
+    /* استعادة اللغة 
+       استعادة اللغة المحفوظة من localStorage وتطبيقها
+    */
     // استعادة اللغة المحفوظة
     const savedLang = localStorage.getItem('language') || 'ar';
     if (savedLang === 'en') {
@@ -613,6 +687,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // تشغيل دالة الزر العائم
     initFabButton();
 
+    /* تبديل التنقل الخاص بالهواتف المحمولة
+       قائمة همبرغر للتصميم المتجاوب
+    */
     // القائمة المنسدلة للهاتف
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
@@ -622,6 +699,9 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
+    /* معالج تبديل اللغة
+       يبدل بين العربية/الإنجليزية، يحدث الواجهة فوراً
+    */
     // زر تغيير اللغة
     const langToggle = document.getElementById('lang-toggle');
     if (langToggle) {
@@ -642,6 +722,9 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
+    /* تبديل الوضع الليلي
+       تبديل الثيم الداكن، يستمر في localStorage
+    */
     // الوضع الليلي مع حفظ الإعداد
     const darkModeBtn = document.getElementById('dark-mode');
     if (localStorage.getItem('theme') === 'dark') {
@@ -654,6 +737,9 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
+    /* عناصر تحكم حجم الخط
+       تكبير/تصغير حجم الخط (80-130%)، يستخدم font-size جذر %
+    */
     // تكبير وتصغير الخط مع حفظ الإعداد - يؤثر على جميع النصوص
     let currentSize = localStorage.getItem('fontSize') ? parseInt(localStorage.getItem('fontSize')) : 100;
 
@@ -686,6 +772,9 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
+    /* حاسبة الحجز
+       حساب التكلفة في الوقت الفعلي بناءً على الحزمة * الأيام
+    */
     // حاسبة التكلفة التلقائية في صفحة الحجز
     const packageSelect = document.getElementById('package');
     const daysInput = document.getElementById('days');
@@ -701,6 +790,9 @@ document.addEventListener('DOMContentLoaded', function() {
         daysInput.addEventListener('input', calculateTotal);
     }
 
+    /* معالجات إرسال النماذج
+       منع الافتراضي، عرض تنبيهات النجاح، إعادة تعيين النماذج
+    */
     // معالجة النماذج
     const forms = document.querySelectorAll('form');
     const lang = localStorage.getItem('language') || 'ar';
