@@ -1,4 +1,4 @@
-/* المتغيرات الأساسية للتصميم الحديث */
+/* ===== المتغيرات الأساسية للتصميم الحديث ===== */
 
 :root {
     --primary: #0f2027;
@@ -13,7 +13,7 @@
 }
 
 
-/* الوضع الليلي الحديث */
+/* ===== الوضع الليلي الحديث ===== */
 
 body.dark-mode {
     --primary: #0a0a0a;
@@ -24,6 +24,9 @@ body.dark-mode {
     --card-bg: #222222;
     --shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
+
+
+/* ===== إعادة تعيين الأنماط الأساسية ===== */
 
 * {
     margin: 0;
@@ -40,7 +43,7 @@ body {
 }
 
 
-/* شريط التنقل الاحترافي */
+/* ===== شريط التنقل الاحترافي ===== */
 
 header {
     background: linear-gradient(to left, var(--primary), var(--secondary));
@@ -82,13 +85,13 @@ nav {
     padding-left: 0;
 }
 
+
+/* ===== دعم اللغة الإنجليزية (LTR) ===== */
+
 [dir="ltr"] nav {
     padding-left: 0;
     padding-right: 0;
 }
-
-
-/* دعم اللغة الإنجليزية */
 
 [dir="ltr"] .form-group {
     text-align: left;
@@ -137,7 +140,7 @@ nav a:hover::after {
 }
 
 
-/* القائمة الجانبية للهاتف */
+/* ===== القائمة الجانبية للهواتف ===== */
 
 .hamburger {
     display: none;
@@ -154,7 +157,7 @@ nav a:hover::after {
 }
 
 
-/* الزر العائم المتطور */
+/* ===== الزر العائم المتطور ===== */
 
 .fab-container {
     position: fixed;
@@ -223,7 +226,7 @@ nav a:hover::after {
 }
 
 
-/* الأقسام العامة والتخطيط */
+/* ===== الأقسام العامة والتخطيط ===== */
 
 .container {
     max-width: 1200px;
@@ -254,7 +257,7 @@ body.dark-mode .section-title {
 }
 
 
-/* البطاقات الحديثة */
+/* ===== البطاقات الحديثة ===== */
 
 .grid {
     display: grid;
@@ -298,7 +301,7 @@ body.dark-mode .card h3 {
 }
 
 
-/* الأزرار */
+/* ===== الأزرار المتجاوبة ===== */
 
 .btn {
     display: inline-block;
@@ -321,7 +324,7 @@ body.dark-mode .card h3 {
 }
 
 
-/* النماذج */
+/* ===== النماذج المتجاوبة ===== */
 
 .form-box {
     background: var(--card-bg);
@@ -384,7 +387,7 @@ body.dark-mode .card h3 {
 }
 
 
-/* استجابة الهواتف */
+/* ===== الاستجابة للهواتف والأجهزة اللوحية ===== */
 
 @media (max-width: 768px) {
     .brand-name img {
@@ -418,7 +421,7 @@ body.dark-mode .card h3 {
 }
 
 
-/* أنماط قسم الفيديو */
+/* ===== أنماط قسم الفيديو المتجاوبة ===== */
 
 .video-container {
     width: 100%;
@@ -436,7 +439,7 @@ body.dark-mode .card h3 {
 }
 
 
-/* الذيل (Footer) */
+/* ===== الذيل (Footer) المتجاوب ===== */
 
 footer {
     background: linear-gradient(to left, var(--primary), var(--secondary));
@@ -556,7 +559,7 @@ footer {
     max-width: 1200px;
     margin: 40px auto 0;
     padding-top: 25px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 0.15);
     text-align: center;
     font-size: 0.95rem;
     opacity: 0.8;
@@ -566,6 +569,9 @@ footer {
     color: var(--accent);
     font-weight: bold;
 }
+
+
+/* ===== استجابة الذيل للشاشات الصغيرة ===== */
 
 @media (max-width: 768px) {
     footer {
@@ -588,14 +594,14 @@ footer {
 }
 
 
-/* تنسيق خاص للبطاقة الرابعة (الحزمة المخصصة) لتتوسط الشاشة بأناقة */
+/* ===== تنسيق خاص للبطاقة الرابعة (الحزمة المخصصة) ===== */
 
 .special-card {
     grid-column: 1 / -1;
-    /* أمر برمجي يجبر البطاقة على حجز السطر بالكامل */
+    /* يجبر البطاقة على حجز السطر كاملاً */
     max-width: 360px;
-    /* يحد من عرضها لتبقى بطاقة ولا تصبح لافتة عريضة */
+    /* يحد العرض لتبقى بطاقة أنيقة */
     margin: 0 auto;
-    /* يضع البطاقة في منتصف السطر تماماً */
+    /* توسيط البطاقة تماماً */
     width: 100%;
 }
